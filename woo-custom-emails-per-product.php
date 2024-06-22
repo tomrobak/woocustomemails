@@ -68,3 +68,11 @@ function run_woo_custom_emails_per_product() {
 
 // Go!
 run_woo_custom_emails_per_product();
+run_woo_custom_emails_per_product();
+
+// Declare compatibility with WooCommerce HPOS
+add_action( 'before_woocommerce_init', function() {
+	if (class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' )) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+});
